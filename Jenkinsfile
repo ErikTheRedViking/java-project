@@ -19,6 +19,8 @@ node('linux'){
     }
     stage('Report'){
         git credentialsId: 'Github', url: 'https://github.com/ErikTheRedViking/java-project.git'
-        sh "aws cloudformation describe-stack-resources --region us-east-1 --stack-name hw-10-2"
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AKIAYOINYVWCTXDDRQUD', credentialsId: 'jenkins', secretKeyVariable: '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']]) {
+            sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name hw-10-2'
+        }
     }
 }
