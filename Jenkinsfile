@@ -19,7 +19,7 @@ node('linux'){
     }
     stage('Report'){
         git credentialsId: 'Github', url: 'https://github.com/ErikTheRedViking/java-project.git'
-        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AKIAYOINYVWCTXDDRQUD', credentialsId: 'jenkins', secretKeyVariable: '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']]) {
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'adub', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
             sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name hw-10-2'
         }
     }
