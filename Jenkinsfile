@@ -15,7 +15,7 @@ node('linux'){
     }
     stage('Deploy'){
         git credentialsId: 'Github', url: 'https://github.com/ErikTheRedViking/java-project.git'
-        sh "aws s3 cp /workspace/java-pipeline/dist/rectangle-7.jar s3://hw-10-e/rectangle-7.jar"
+        sh "aws s3 cp /workspace/java-pipeline/dist/rectangle-*.jar s3://hw-10-e/"
     }
     stage('Report'){
         sh "aws cloudformation describe-stack-resources --region us-east-1 --stack-name hw-10-2"
